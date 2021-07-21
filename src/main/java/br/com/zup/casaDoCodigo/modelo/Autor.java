@@ -15,7 +15,7 @@ public class Autor {
     private Long id;
     @NotBlank
     private String nome;
-    @Column(unique = true) @Email
+    @Column(unique = true) @NotBlank @Email
     private String email;
     @NotBlank @Size(max=400)
     private String descricao;

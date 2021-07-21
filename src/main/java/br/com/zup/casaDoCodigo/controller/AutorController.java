@@ -2,13 +2,11 @@ package br.com.zup.casaDoCodigo.controller;
 
 import br.com.zup.casaDoCodigo.controller.dto.AutorDto;
 import br.com.zup.casaDoCodigo.controller.form.AutorForm;
-import br.com.zup.casaDoCodigo.controller.validator.EmailDuplicadoAutorValidator;
 import br.com.zup.casaDoCodigo.modelo.Autor;
 import br.com.zup.casaDoCodigo.repository.AutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -19,13 +17,6 @@ public class AutorController {
 
     @Autowired
     AutorRepository autorRepository;
-    @Autowired
-    private EmailDuplicadoAutorValidator emailDuplicadoAutorValidator;
-
-    @InitBinder
-    public void init(WebDataBinder binder){
-        binder.addValidators(emailDuplicadoAutorValidator);
-    }
 
     @PostMapping
     public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm){

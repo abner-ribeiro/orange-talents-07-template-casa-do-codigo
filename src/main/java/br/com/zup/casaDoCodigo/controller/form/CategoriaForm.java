@@ -1,11 +1,12 @@
 package br.com.zup.casaDoCodigo.controller.form;
 
+import br.com.zup.casaDoCodigo.controller.validator.UniqueValue;
 import br.com.zup.casaDoCodigo.modelo.Categoria;
 
 import javax.validation.constraints.NotBlank;
 
 public class CategoriaForm {
-    @NotBlank
+    @NotBlank @UniqueValue(domainClass = Categoria.class, fieldName = "nome")
     private String nome;
 
     public String getNome() {

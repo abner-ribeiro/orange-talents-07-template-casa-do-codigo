@@ -1,5 +1,6 @@
 package br.com.zup.casaDoCodigo.controller.form;
 
+import br.com.zup.casaDoCodigo.controller.validator.UniqueValue;
 import br.com.zup.casaDoCodigo.modelo.Autor;
 
 import javax.validation.constraints.Email;
@@ -10,7 +11,7 @@ import javax.validation.constraints.Size;
 public class AutorForm {
     @NotBlank
     private String nome;
-    @NotBlank @Email
+    @NotBlank @Email @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotBlank @Size(max=400)
     private String descricao;

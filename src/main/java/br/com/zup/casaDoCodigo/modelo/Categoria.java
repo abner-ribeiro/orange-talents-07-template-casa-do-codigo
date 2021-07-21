@@ -3,13 +3,14 @@ package br.com.zup.casaDoCodigo.modelo;
 import br.com.zup.casaDoCodigo.controller.dto.CategoriaDto;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true)
+    @NotBlank @Column(unique = true)
     private String nome;
 
     @Deprecated

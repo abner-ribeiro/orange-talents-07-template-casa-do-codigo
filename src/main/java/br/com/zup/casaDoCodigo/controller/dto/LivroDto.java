@@ -15,7 +15,7 @@ public class LivroDto {
         this.titulo = titulo;
     }
     public static Page<LivroDto> pageLivroToPageDto(Page<Livro> livros){
-        return livros.map(livro -> livro.toDto());
+        return livros.map(livro -> new LivroDto(livro.getId(),livro.getTitulo()));
     }
 
     public Long getId() {

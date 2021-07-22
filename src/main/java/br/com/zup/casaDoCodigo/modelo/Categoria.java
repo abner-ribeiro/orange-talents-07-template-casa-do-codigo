@@ -21,7 +21,7 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public CategoriaDto toDto(){
-        return new CategoriaDto(nome);
+    public String getNome() {
+        return nome;
     }
 }

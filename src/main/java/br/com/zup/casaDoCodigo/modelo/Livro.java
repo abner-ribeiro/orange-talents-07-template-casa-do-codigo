@@ -50,7 +50,35 @@ public class Livro {
         this.autor = autor;
     }
 
-    public LivroDto toDto(){
-        return new LivroDto(id,titulo);
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getResumo() {
+        return resumo;
+    }
+
+    public String getSumario() {
+        return sumario;
+    }
+
+    public BigDecimal getPreco() {
+        return preco;
+    }
+
+    public Integer getNumeroDePaginas() {
+        return numeroDePaginas;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public Autor getAutor() {
+        return autor;
     }
 }

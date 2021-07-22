@@ -22,7 +22,7 @@ public class CategoriaController {
     public ResponseEntity<CategoriaDto> cadastrar(@RequestBody @Valid CategoriaForm categoriaForm){
         Categoria categoria = categoriaForm.toModel();
         categoriaRepository.save(categoria);
-        return ResponseEntity.status(HttpStatus.OK).body(categoria.toDto());
+        return ResponseEntity.status(HttpStatus.OK).body(new CategoriaDto(categoria.getNome()));
     }
 
 }

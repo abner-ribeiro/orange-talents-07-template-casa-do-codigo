@@ -31,7 +31,19 @@ public class Autor {
     public Autor(){
     }
 
-    public AutorDto toDto(){
-        return new AutorDto(nome,email,descricao,dataCriacao);
+    public String getNome() {
+        return nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 }

@@ -22,6 +22,6 @@ public class AutorController {
     public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm){
         Autor autor = autorForm.toModel();
         autorRepository.save(autor);
-        return ResponseEntity.status(HttpStatus.OK).body(autor.toDto());
+        return ResponseEntity.status(HttpStatus.OK).body(new AutorDto(autor.getNome(), autor.getEmail(), autor.getDescricao(), autor.getDataCriacao()));
     }
 }

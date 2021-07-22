@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/categoria")
+@RequestMapping(value = "/categorias")
 public class CategoriaController {
 
     @Autowired
@@ -22,7 +22,7 @@ public class CategoriaController {
     public ResponseEntity<CategoriaDto> cadastrar(@RequestBody @Valid CategoriaForm categoriaForm){
         Categoria categoria = categoriaForm.toModel();
         categoriaRepository.save(categoria);
-        return ResponseEntity.status(HttpStatus.CREATED).body(categoria.toDto());
+        return ResponseEntity.status(HttpStatus.OK).body(categoria.toDto());
     }
 
 }

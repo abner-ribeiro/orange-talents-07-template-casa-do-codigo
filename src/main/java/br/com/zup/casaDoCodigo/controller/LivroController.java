@@ -7,14 +7,15 @@ import br.com.zup.casaDoCodigo.repository.AutorRepository;
 import br.com.zup.casaDoCodigo.repository.CategoriaRepository;
 import br.com.zup.casaDoCodigo.repository.LivroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 
 @RestController
 @RequestMapping(value = "/livros")
@@ -31,6 +32,12 @@ public class LivroController {
         Livro livro = livroForm.toModel(categoriaRepository,autorRepository);
         livroRepository.save(livro);
         return ResponseEntity.status(HttpStatus.OK).body(livro.toDto());
+    }
+    @GetMapping
+    public ResponseEntity<Page<LivroDto>> listar(Pageable pageable){
+        Page<Livro> livros = livroRepository.findAll(pageable);
+
+        return ResponseEntity.status(HttpStatus.OK).body(LivroDto.pageLivroToPageDto(livros));
     }
 
 }

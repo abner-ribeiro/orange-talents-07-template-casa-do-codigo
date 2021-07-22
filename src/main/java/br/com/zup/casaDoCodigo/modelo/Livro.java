@@ -51,6 +51,6 @@ public class Livro {
     }
 
     public LivroDto toDto(){
-        return new LivroDto(titulo,dataDePublicacao,isbn);
+        return new LivroDto(id,titulo);
     }
 }

@@ -26,6 +26,6 @@ public class IdExistsValidator implements ConstraintValidator<IdExists,Object> {
         Query query = manager.createQuery("select 1 from "+klass.getName()+" where "+domainAttribute+"=:value");
         query.setParameter("value", o);
         List<?> list = query.getResultList();
-        return !list.isEmpty();
+        return !list.isEmpty() || o == null;
     }
 }

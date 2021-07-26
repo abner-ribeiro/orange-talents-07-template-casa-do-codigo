@@ -25,11 +25,11 @@ public class EstadoController {
     PaisRepository paisRepository;
 
     @PostMapping
-    public ResponseEntity<EstadoDto> cadastrar(@RequestBody @Valid EstadoForm estadoForm){
+    public ResponseEntity<?> cadastrar(@RequestBody @Valid EstadoForm estadoForm){
         Optional<Estado> estadoRequest = estadoRepository.findByNome(estadoForm.getNome());
         //Verifica se esse estado tem o nome único somente para aquele país que deseja cadastrar
         if(estadoRequest.isPresent() && (estadoRequest.get().getPais().getId() == estadoForm.getPaisId())){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Esse estado já está cadastrado!");
         }
         Estado estado = estadoForm.toModel(paisRepository);
         estadoRepository.save(estado);
